@@ -1,0 +1,153 @@
+name: _
+
+resolver: lts-18.27
+
+flags:
+  # Bundle VRF crypto in libsodium and do not rely on an external fork to have it.
+  # This still requires the host system to have the 'standard' libsodium installed.
+  bcc-crypto-optimum:
+    external-libsodium-vrf: false
+
+packages:
+- async-timer-0.2.0.0
+- canonical-json-0.6.0.0
+- composition-prelude-3.0.0.2
+- constraints-extras-0.3.1.0
+- dom-lt-0.2.3
+- gray-code-0.3.1
+- lazy-search-0.1.2.1
+- markov-chain-usage-model-0.0.0
+- monoidal-containers-0.6.2.0
+- moo-1.2
+- network-3.1.2.2
+- nothunks-0.1.3
+- partial-order-0.2.0.0
+- quickcheck-state-machine-0.7.1
+- size-based-0.1.2.0
+- statistics-linreg-0.3
+- streaming-binary-0.2.2.0
+- transformers-except-0.1.2
+- Unique-0.4.7.9
+
+- git: https://github.com/The-Blockchain-Company/bcc-base
+  commit: 41545ba3ac6b3095966316a99883d678b5ab8da8
+  subdirs:
+  - base-deriving-via
+  - binary
+  - binary/test
+  - bcc-crypto-class
+  - bcc-crypto-optimum
+  - bcc-crypto-tests
+  - measures
+  - orphans-deriving-via
+  - slotting
+  - strict-containers
+
+- git: https://github.com/The-Blockchain-Company/bcc-crypto
+  commit: f73079303f663e028288f9f4a9e08bcca39a923e
+
+- git: https://github.com/The-Blockchain-Company/bcc-ledger
+  commit: 1a9ec4ae9e0b09d54e49b2a40c4ead37edadcce5
+  subdirs:
+  - eras/aurum/impl
+  - eras/aurum/test-suite
+  - eras/cole/chain/executable-spec
+  - eras/cole/crypto
+  - eras/cole/crypto/test
+  - eras/cole/ledger/executable-spec
+  - eras/cole/ledger/impl
+  - eras/cole/ledger/impl/test
+  - eras/sophie/impl
+  - eras/sophie/test-suite
+  - eras/sophie-ma/impl
+  - eras/sophie-ma/test-suite
+  - libs/bcc-data
+  - libs/bcc-ledger-core
+  - libs/bcc-ledger-pretty
+  - libs/bcc-protocol-toptimum
+  - libs/compact-map
+  - libs/non-integral
+  - libs/set-algebra
+  - libs/small-steps
+  - libs/small-steps-test
+
+- git: https://github.com/The-Blockchain-Company/bcc-node
+  commit: 73f9a746362695dc2cb63ba757fbcabb81733d23
+  subdirs:
+  - bcc-api
+
+- git: https://github.com/The-Blockchain-Company/bcc-prelude
+  commit: bb4ed71ba8e587f672d06edf9d2e376f4b055555
+  subdirs:
+  - bcc-prelude
+  - bcc-prelude-test
+
+- git: https://github.com/The-Blockchain-Company/flat
+  commit: ee59880f47ab835dbd73bea0847dab7869fc20d8
+
+- git: https://github.com/The-Blockchain-Company/goblins
+  commit: cde90a2b27f79187ca8310b6549331e59595e7ba
+
+- git: https://github.com/The-Blockchain-Company/hedgehog-extras
+  commit: edf6945007177a638fbeb8802397f3a6f4e47c14
+
+- git: https://github.com/The-Blockchain-Company/tbco-monitoring-framework
+  commit: 808724ff8a19a33d0ed06f9ef59fbd900b08553c
+  subdirs:
+  - contra-tracer
+  - tbco-monitoring
+  - plugins/backend-aggregation
+  - plugins/backend-ekg
+  - plugins/backend-monitoring
+  - plugins/backend-trace-forwarder
+  - plugins/scribe-systemd
+  - tracer-transformers
+
+- git: https://github.com/The-Blockchain-Company/shardagnostic-network
+  commit: 4fac197b6f0d2ff60dc3486c593b68dc00969fbf
+  subdirs:
+  - io-classes
+  - io-sim
+  - monoidal-synchronisation
+  - network-mux
+  - shardagnostic-consensus
+  - shardagnostic-consensus-test
+  - shardagnostic-consensus-cole
+  - shardagnostic-consensus-colespec
+  - shardagnostic-consensus-cole-test
+  - shardagnostic-consensus-bcc
+  - shardagnostic-consensus-protocol
+  - shardagnostic-consensus-sophie
+  - shardagnostic-consensus-sophie-test
+  - shardagnostic-consensus-bcc-test
+  - shardagnostic-network
+  - shardagnostic-network-framework
+  - shardagnostic-network-testing
+  - strict-stm
+  - typed-protocols
+  - typed-protocols-cborg
+  - typed-protocols-examples
+
+- git: https://github.com/The-Blockchain-Company/plutus
+  commit: ce0ab0ae72e0995ba23f29247e97c1beeb466905
+  subdirs:
+  - plutus-core
+  - plutus-core-testlib
+  - plutus-ledger-api
+  - plutus-tx
+  - plutus-tx-testlib
+  - prettyprinter-configurable
+  - stubs/plutus-ghc-stub
+  - word-array
+
+- git: https://github.com/The-Blockchain-Company/Win32-network
+  commit: 3825d3abf75f83f406c1f7161883c438dac7277d
+
+- git: https://github.com/KtorZ/hjsonpointer
+  commit: 75ed0d049c33274a6cb4c36c8538d4bf2ef9c30e
+
+- git: https://github.com/KtorZ/hjsonschema
+  commit: fde6e676f79f3f3320a558f20492ad816a2543a7
+
+- git: https://github.com/KtorZ/wai-routes
+  commit: d74b39683792649c01113f40bf57724dcf95c96a

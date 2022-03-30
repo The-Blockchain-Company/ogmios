@@ -1,0 +1,61 @@
+{
+  "name": "bcc-ogmios",
+  "version": "5.2.0",
+  "private": true,
+  "description": "TypeScript monorepo with client libraries for Cardano Ogmios",
+  "engines": {
+    "node": ">=14"
+  },
+  "workspaces": [
+    "packages/schema",
+    "packages/client",
+    "packages/repl"
+  ],
+  "main": "dist/index.js",
+  "repository": "https://github.com/The-Blockchain-Company/ogmios",
+  "author": "Rhys Bartels-Waller",
+  "license": "MPL-2.0",
+  "scripts": {
+    "aurum-purple:up": "DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 OGMIOS_PORT=1341 NETWORK=aurum-purple docker-compose -p ogmios-aurum-purple up --build",
+    "aurum-purple:down": "docker-compose -p ogmios-aurum-purple down",
+    "aurum-qa:up": "DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 OGMIOS_PORT=1340 NETWORK=aurum-qa docker-compose -p ogmios-aurum-qa up --build",
+    "aurum-qa:down": "docker-compose -p ogmios-aurum-qa down",
+    "aurum-white:up": "DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 OGMIOS_PORT=1339 NETWORK=aurum-white docker-compose -p ogmios-aurum-white up --build",
+    "aurum-white:down": "docker-compose -p ogmios-aurum-white down",
+    "build": "yarn workspaces run build",
+    "cleanup": "yarn workspaces run cleanup &&  shx rm -rf docs/theme && shx rm -rf node_modules",
+    "generate-schema-types": "yarn workspace @bcc-ogmios/schema run generate-schema-types",
+    "lint": "yarn workspaces run lint",
+    "mainnet:up": "DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker-compose -p ogmios-mainnet up --build",
+    "mainnet:down": "docker-compose -p ogmios-mainnet down",
+    "repl:pkg": "yarn workspace @bcc-ogmios/repl run pkg",
+    "repl:start": "yarn workspace @bcc-ogmios/repl run start",
+    "test": "yarn workspaces run test",
+    "testnet:up": "DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 OGMIOS_PORT=1338 NETWORK=testnet docker-compose -p ogmios-testnet up",
+    "testnet:down": "docker-compose -p ogmios-testnet down",
+    "tags": "ctags $(find packages -type f -name '*.ts' ! -path 'dist/*' ! -name '*.test.ts' ! -name '*.d.ts' ! -path 'node_modules/*')",
+    "docs": "tar -C docs -xf docs/ogmios-typedoc-theme.tar.gz && typedoc --packages ."
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.32",
+    "@types/ws": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "delay": "^5.0.0",
+    "eslint": "^7.21.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.2.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-watch": "^7.0.0",
+    "jest": "^26.6.3",
+    "json-schema-to-typescript": "The-Blockchain-Company/json-schema-to-typescript",
+    "shx": "^0.3.3",
+    "ts-jest": "^26.5.3",
+    "typedoc": "^0.21.4",
+    "typescript": "^4.2.3"
+  }
+}

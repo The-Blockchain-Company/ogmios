@@ -1,0 +1,173 @@
+_config: !include ".hpack.config.yaml"
+
+name:                ogmios
+version:             5.2.0
+stability:           stable
+github:              "The-Blockchain-Company/ogmios"
+license:             MPL-2.0
+author:              "KtorZ <matthias.benkort@gmail.com>"
+maintainer:          "matthias.benkort@gmail.com"
+copyright:           "2020-2021 KtorZ"
+description:         Please see the README on GitHub at <https://github.com/The-Blockchain-Company/ogmios/tree/master/server#ogmios-server>
+synopsis:            A JSON-WSP WebSocket client for bcc-node
+category:            Web
+
+extra-source-files:
+- static/*
+- static/assets/*
+
+dependencies:
+- base >= 4.7 && < 5
+
+default-extensions: *default-extensions
+
+flags:
+  production:
+    description: Compile executables for production.
+    default: False
+    manual: True
+
+library:
+  source-dirs: src
+  ghc-options: *ghc-options-lib
+  when:
+    condition: flag(production)
+    ghc-options:
+    - -Werror
+    - -O2
+  dependencies:
+    - aeson
+    - array
+    - async
+    - base16
+    - base64
+    - base58-bytestring
+    - bech32
+    - bytestring
+    - bcc-api
+    - bcc-binary
+    - bcc-client
+    - bcc-crypto
+    - bcc-crypto-class
+    - bcc-crypto-wrapper
+    - bcc-data
+    - bcc-ledger-aurum
+    - bcc-ledger-cole
+    - bcc-ledger-core
+    - bcc-ledger-sophie
+    - bcc-ledger-sophie-ma
+    - bcc-protocol-toptimum
+    - bcc-slotting
+    - cborg
+    - containers
+    - contra-tracer
+    - contra-tracers
+    - directory
+    - ekg-core
+    - fast-bech32
+    - file-embed
+    - filepath
+    - formatting
+    - generic-lens
+    - git-th
+    - http-client
+    - http-types
+    - io-classes
+    - io-sim
+    - tbco-monitoring
+    - iproute
+    - json-wsp
+    - lens-aeson
+    - memory
+    - mtl
+    - optparse-applicative
+    - shardagnostic-consensus
+    - shardagnostic-consensus-cole
+    - shardagnostic-consensus-bcc
+    - shardagnostic-consensus-sophie
+    - shardagnostic-network
+    - prettyprinter
+    - profunctors
+    - relude
+    - safe
+    - safe-exceptions
+    - scientific
+    - serialise
+    - small-steps
+    - stm
+    - strict-containers
+    - text
+    - time
+    - time-manager
+    - transformers
+    - typed-protocols
+    - unix
+    - unordered-containers
+    - vector
+    - yaml
+    - wai
+    - wai-routes
+    - wai-websockets
+    - warp
+    - websockets
+  system-build-tools:
+  - git
+
+executables:
+  ogmios:
+    main: Main.hs
+    source-dirs: app
+    ghc-options: *ghc-options-executable
+    when:
+      condition: flag(production)
+      ghc-options:
+      - -O2
+      - -Werror
+      - '"-with-rtsopts=-A100m -T -N2"'
+    dependencies:
+    - ogmios
+
+tests:
+  unit:
+    main: Spec.hs
+    source-dirs: test/unit
+    ghc-options: *ghc-options-test
+    dependencies:
+    - aeson
+    - aeson-pretty
+    - bytestring
+    - bcc-client
+    - bcc-ledger-aurum
+    - bcc-ledger-core
+    - bcc-ledger-sophie
+    - bcc-ledger-sophie-test
+    - bcc-slotting
+    - containers
+    - directory
+    - file-embed
+    - generic-arbitrary
+    - generics-sop
+    - hedgehog-quickcheck
+    - hspec
+    - hspec-json-schema
+    - io-sim
+    - io-classes
+    - json-wsp
+    - lens-aeson
+    - ogmios
+    - shardagnostic-consensus
+    - shardagnostic-consensus-cole
+    - shardagnostic-consensus-bcc
+    - shardagnostic-consensus-bcc-test
+    - shardagnostic-consensus-sophie
+    - shardagnostic-network
+    - shardagnostic-network-framework
+    - QuickCheck
+    - random
+    - relude
+    - template-haskell
+    - text
+    - time
+    - typed-protocols
+    build-tools:
+    - hspec-discover
