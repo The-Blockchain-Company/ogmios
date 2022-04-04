@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   bcc-node:
-    image: inputoutput/bcc-node:1.34.1
+    image: tbco/bcc-node
     command: [
       "run",
       "--config", "/config/config.json",
@@ -23,7 +23,7 @@ services:
         max-file: "20"
 
   ogmios:
-    image: The-Blockchain-Company/ogmios:latest-${NETWORK:-mainnet}
+    image: tbco/ogmios:latest-${NETWORK:-mainnet}
     build:
       context: .
       target: ogmios

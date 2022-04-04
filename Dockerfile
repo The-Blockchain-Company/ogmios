@@ -43,7 +43,7 @@ ENTRYPOINT ["/bin/ogmios"]
 # --------------------- RUN (bcc-node & ogmios) -------------------------- #
 #                                                                              #
 
-FROM inputoutput/bcc-node:1.33.0 as bcc-node-ogmios
+FROM tbco/bcc-node as bcc-node-ogmios
 
 ARG NETWORK=mainnet
 
