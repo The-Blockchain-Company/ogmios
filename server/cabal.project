@@ -152,8 +152,8 @@ source-repository-package
 source-repository-package
   type: git
   location: https://github.com/The-Blockchain-Company/shardagnostic-network
-  tag: 4fac197b6f0d2ff60dc3486c593b68dc00969fbf
-  --sha256: 1b43vbdsr9m3ry1kgag2p2ixpv54gw7a4vvmndxl6knqg8qbsb8b
+  tag: 29a1879bbbbd3250681aaacfbaad4a17d1ebd578
+  --sha256:
   subdir:
     io-classes
     io-sim
